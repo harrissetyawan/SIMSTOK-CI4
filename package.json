@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-select": "^1.13.18",
+    "datepicker-moment": "^2.0.2"
+  }
+}

@@ -1,0 +1,136 @@
+.btn-primary:hover {
+  color: #fff;
+  background-color: #c22c22e9;
+  border-color: #c22c22e9;
+}
+a.nav-link#linkmenu {
+  color: #fff;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  width: 90px;
+}
+a.nav-link.linkactivated#linkmenu {
+  color: #f89d13;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  width: 95px;
+  text-decoration-line: overline;
+}
+a.nav-link#linkmenu:hover {
+  color: #f89d13;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  width: 95px;
+  text-decoration-line: overline;
+}
+.navMenuBtn {
+  text-decoration: none;
+  color: #1B120F;
+}
+.navMenuBtn:hover {
+  text-decoration: none;
+  color: #8f2b14;
+}
+.aktif {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  margin-right: 7px;
+  margin-left: 7px;
+  transition: 0.1s ease;
+  color: #8f2b14;
+}
+.nav-pills .nav-link.cuz.active,
+.nav-pills .show > .nav-link {
+  color: #272727;
+  text-decoration: solid;
+  background-color: #F89D13;
+}
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+input:focus {
+  outline: none;
+}
+input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #F89D13;
+}
+.bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.bar:before,
+.bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #F89D13;
+  transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.form-control:focus {
+  color: #495057;
+  background-color: #ffffff;
+  border-color: #ff6e07;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #ff950078;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dd7515;
+}

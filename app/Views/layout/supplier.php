@@ -1,0 +1,99 @@
+<?= $this->extend('layout/main'); ?>
+<?= $this->section('content'); ?>
+<div class="text-left d-xl-flex justify-content-xl-center content" style="margin-top: 0px;width: 100%;">
+  <section class="mt-4" style="width: 1180.327px;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col" style="height: 204.123px;">
+          <div class="card shadow">
+            <div class="card-header py-2">
+              <p class="lead text-info m-0">DAFTAR SUPPLIER</p>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#modalSuppAdd" type="button" style="padding-top: 0px;">TAMBAH</button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive table mb-0 pt-3 pr-2">
+                <table class="table table-striped table-sm my-0 mydatatable">
+                  <thead class="text-left">
+                    <tr>
+                      <th style="width: 271.215px;">Nama Supplier</th>
+                      <th style="width: 163px;">Nomor Telepon</th>
+                      <th style="width: 361.646px;">Alamat</th>
+                      <th style="width: 271.646px;">Keterangan</th>
+                      <th class="text-center" style="width: 87.723px;"><i class="fa fa-gears" style="font-size: 22px;"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($supplier as $supp) : ?>
+                      <tr>
+                        <td><?= $supp['namaSupp']; ?></td>
+                        <td><?= $supp['noTelpSupp']; ?></td>
+                        <td><?= $supp['alamatSupp']; ?></td>
+                        <td><?= $supp['Keterangan']; ?></td>
+                        <!-- ACTION -->
+                        <td class="text-center">
+                          <a href="/editSupp/<?= $supp['idSupp']; ?>"><i class="fa fa-pencil"></i></a>
+                          <form action="/supp/<?= $supp['idSupp']; ?>" method="post" style="display: inline; ">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="pl-1" type="submit" style="color: var(--red);">
+                              <i class="fa fa-trash-o" style="font-size: 20px;"></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+                <div class="pt-2">
+                  <?= $pager->links('tablesupp', 'custom_pager') ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- MODAL SUPP -->
+<div class="modal fade" role="dialog" tabindex="-1" id="modalSuppAdd" aria-labelledby="modalSuppAdd" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">FORM SUPPLIER</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form action="/Supplier/save" method="POST">
+            <?= csrf_field(); ?>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <div class="form-group">
+              <label for="inputNamaSupp">Nama Supplier</label>
+              <input type="text" class="form-control" name="inputNamaSupp" id="inputNamaSupp" aria-describedby="inputNamaSuppHelp">
+            </div>
+            <div class="form-group">
+              <label for="inputAlamatSupp">Alamat Supplier</label>
+              <input type="text" class="form-control" name="inputAlamatSupp" id="inputAlamatSupp" aria-describedby="inputAlamatSupp">
+            </div>
+            <div class="form-group">
+              <label for="inputNoTelpSupp">No Telepon</label>
+              <input type="text" class="form-control" name="inputNoTelpSupp" id="inputNoTelpSupp" aria-describedby="inputNoTelpSuppHelp">
+            </div>
+            <div class="form-floating">
+              <label for="floatingTextarea2">Keterangan</label>
+              <textarea class="form-control" name="deskripsi" placeholder="Deskripsi (optional)" id="floatingTextarea2" style="height: 100px"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+              <!-- <button class="btn btn-primary" type="submit">Save</button> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL SUPP -->
+<?= $this->endSection(); ?>
