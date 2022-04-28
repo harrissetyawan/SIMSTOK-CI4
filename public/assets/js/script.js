@@ -29,13 +29,14 @@ $(document).on('loaded.bs.select changed.bs.select', '#selectOptSupp', function 
   });
 });
 
-
 var count = 1;
 
 $('#addpurchase').on('click', function () {
 
+  prevOptions = $('.selBarang').html();
+  console.log(prevOptions);
   purchase.row.add([
-    '<select required="required" style="width:100%;" class="form-control form-control-sm selBarang" id="selBarang' + count + '" name="nama_obat[]" data-stok="#stok' + count + '" data-unit="#unit' + count + '" data-harga="#harga' + count + '"><option selected="true" value="" disabled >Pilih Supplier</option></select>',
+    '<select required="required" style="width:100%;" class="form-control form-control-sm selBarang" id="selBarang' + count + '" name="nama_obat[]" data-stok="#stok' + count + '" data-unit="#unit' + count + '" data-harga="#harga' + count + '" data-banyak="#banyak' + count + '">' + prevOptions + '</select>',
     '<input id="stok' + count + '" name="stok[]" class="form-control form-control-sm stok" readonly>',
     '<input id="harga' + count + '" name="harga[]" class="form-control form-control-sm harga" readonly>',
     '<input id="unit' + count + '" name="unit[]" class="form-control form-control-sm unit" readonly>',
@@ -48,7 +49,6 @@ $('#addpurchase').on('click', function () {
   $("select").each(function () {
     myOpt.push($(this).val());
   });
-
   $("select").each(function () {
     $(this).find("option").prop('hidden', false);
     var sel = $(this);
@@ -58,6 +58,7 @@ $('#addpurchase').on('click', function () {
       }
     });
   });
+  // console.log(myOpt);
   count++;
 });
 $('#addpurchase').click();
@@ -68,10 +69,10 @@ $('#purchase').on("click", "#removeproduk", function () {
   updatePurchase();
 });
 
+
 $('#purchase').on('change', '.selBarang', function () {
   var $select = $(this);
   var namaBarang = $select.val();
-
   $.ajax({
     type: "POST",
     url: "/getBarang",
@@ -85,12 +86,14 @@ $('#purchase').on('change', '.selBarang', function () {
         $($select.data('harga')).val(data.harga);
         $($select.data('stok')).val(data.stok);
         $($select.data('unit')).val(data.unit);
+        $($select.data('banyak')).val("1");
       });
+      updateSubtotalp();
     }
   });
 });
 
-$('#purchase').on('change', '.banyak', function () {
+$('#purchase').on('input', '.banyak', function () {
   updateSubtotalp();
 });
 
