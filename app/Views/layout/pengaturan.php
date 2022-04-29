@@ -6,7 +6,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link cuz active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profil Toko</a>
         <a class="nav-link cuz" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Nomor Pengingat</a>
-        <button class="btn btn-primary btn-rounded shadow mt-3" form="form">
+        <button class="btn btn-rounded btn-outline-primary shadow mt-3" form="form">
           Simpan Perubahan
         </button>
       </div>

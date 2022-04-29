@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/assets/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="/assets/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet/less" href="/assets/css/style.css">
+  <link rel="stylesheet" media="print" href="/assets/css/print.css">
   <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
   <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
   <link rel="stylesheet" href="/assets/css/-Login-form-Page-BS4-.css">
@@ -23,7 +24,7 @@
 </head>
 
 <body style="height: 100%; background-color: #fbfbfb;">
-  <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="color: var(--blue);background: var(--gray-dark);height: 30px;">
+  <nav class="navbar navbar-light navbar-expand-md navigation-clean d-print-none" style="color: var(--blue);background: var(--gray-dark);height: 30px;">
     <div class="container">
       <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
         <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>

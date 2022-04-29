@@ -94,7 +94,7 @@
 	<script src="/assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
 	<script src="/assets/js/bootstrap-select.min.js"></script>
 	<script src="/assets/less.js/dist/less.min.js" type="text/javascript"></script>
-	<script src="/assets/js/newscript.js" type="text/javascript"></script>
+	<script src="/assets/js/script.js" type="text/javascript"></script>
 	<script src="/assets/bootstrap/js/popper.min.js"></script>
 	<script src="/assets/bootstrap/js/jquery.dataTables.min.js"></script>
 	<script src="/assets/bootstrap/js/dataTables.bootstrap4.min.js"></script>

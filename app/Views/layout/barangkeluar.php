@@ -9,7 +9,8 @@
 						<div class="card-header py-2">
 							<p class="lead text-info m-0">DAFTAR BARANG KELUAR</p>
 							<button class="btn btn-primary" type="button">
-								<a href="/addBrgKeluar" style="color: aliceblue;">TAMBAH</a></button>
+								<a href="/addBrgKeluar" style="color: aliceblue; text-decoration: none;">TAMBAH</a>
+							</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive table mb-0 pt-3 pr-2">

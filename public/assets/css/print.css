@@ -1,14 +1,21 @@
 @media print {
- body {
-   margin: 0;
-   padding: 0;
-   background-color: aqua;
-   width: fit-content;
-   height: fit-content;
-  }
 
- #poContent {
-  background-color: yellowgreen;
- }
-
+@page {
+ margin: 0;
+ padding: 0;
+}
+#toolbarContainer, .delSec {
+ display: none;
+}
+html, body {
+ border: 1px solid white;
+ height: 99%;
+ page-break-after: avoid;
+ page-break-before: avoid;
+}
+@page
+{
+ size: auto;
+ size: landscape;
+}
 }
