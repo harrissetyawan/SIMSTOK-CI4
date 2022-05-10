@@ -42,6 +42,7 @@ $routes->add('/barangmasuk', 'BarangMasuk::index');
 $routes->add('/addBrgMasuk', 'BarangMasuk::');
 $routes->add('/buatPO', 'BarangMasuk::formAdd');
 $routes->add('/getBarang', 'BarangMasuk::getBarang');
+$routes->add('/Messages', 'Messages::checkStok');
 
 $routes->add('/pengaturan', 'Pengaturan::index');
 $routes->add('/pengaturan', 'Pengaturan::index');
