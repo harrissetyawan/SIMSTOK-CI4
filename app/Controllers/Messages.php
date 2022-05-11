@@ -20,6 +20,6 @@ class Messages extends BaseController
  public function checkStok()
  {
   $barang = $this->barangModel->oosBarang();
-  dd($barang);
+  return;
  }
 }

@@ -45,7 +45,7 @@ $routes->add('/getBarang', 'BarangMasuk::getBarang');
 $routes->add('/Messages', 'Messages::checkStok');
 
 $routes->add('/pengaturan', 'Pengaturan::index');
-$routes->add('/pengaturan', 'Pengaturan::index');
+$routes->add('/updateSet/(:segment)', 'Pengaturan::update/$1');
 $routes->get('/supplier', 'Supplier::index');
 
 // ACTION

@@ -16,43 +16,49 @@
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
           <div class="card">
             <div class="card-body shadow a">
-              <form action="" method="post" id="form">
+              <form action="/updateSet/<?php $profil['idProfil'] ?>" method="post" id="form">
                 <div class="row mb-3">
                   <label for="inputNamaToko" class="col-sm-3 ">Nama Toko</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputNamaToko" value="<?= $profil['namaProfil']; ?>">
+                    <input type="text" class="form-control" id="inputNamaToko" name="inputNamaToko" value="<?= $profil['namaProfil']; ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="floatingTextarea2" class="col-sm-3 ">Alamat</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" value=""><?= $profil['alamatProfil']; ?>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="alamat" name="alamat" style="height: 100px" value=""><?= $profil['alamatProfil']; ?>
                   </textarea>
                     <div class="col-sm-5">
                     </div>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           <div class="card">
             <div class="card-body shadow b">
-              <form action="" method="post">
-                <div class="row mb-3">
-                  <label for="inputNoWA" class="col-sm-3 ">Nomor Whatsapp</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputNoWA" value="<?= $profil['noWA']; ?>">
-                  </div>
+              <label for="">
+                Nomor
+              </label>
+              <div class="row mb-3">
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="inputNoWA" value="<?= $profil['noWA']; ?>" name="inputNoWA">
                 </div>
-                <div class="row mb-3">
-                  <label for="inputNoHP" class="col-sm-3 ">Nomor Handphone</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputNoHP" value="<?= $profil['noHP']; ?>">
-
-                  </div>
+              </div>
+              <div class="custom-control custom-switch pt-2">
+                <input type="checkbox" class="custom-control-input" id="switchWA" <?php $profil['switchWA'] == '1' ? print 'checked' : '' ?> name="switchWA">
+                <label class="custom-control-label text-dark" for="switchWA">Aktifkan notifikasi Whatsapp</label>
+              </div>
+              <div class="row mb-3">
+                <div class="form-floating col-sm-4">
+                  <input type="text" class="form-control" id="inputNoHP" value="<?= $profil['noHP']; ?>" name="inputSMS">
                 </div>
+              </div>
+              <div class="custom-control custom-switch pt-2">
+                <input type="checkbox" class="custom-control-input" id="switchSMS" <?php $profil['switchSMS'] == '1' ? print 'checked' : '' ?> name="switchSMS">
+                <label class="custom-control-label text-dark" for="switchSMS">Aktifkan notifikasi SMS</label>
+              </div>
               </form>
             </div>
           </div>

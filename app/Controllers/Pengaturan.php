@@ -19,4 +19,17 @@ class Pengaturan extends BaseController
     return view('layout/pengaturan', $data);
     // dd($data['profil']);
   }
+  public function update($id)
+  {
+    // $this->pengaturanModel->save($id, [
+    //   'namaProfil' => $this->request->getVar('inputNamaToko'),
+    //   'alamatProfil' => $this->request->getVar('alamat'),
+    //   'noWA' => $this->request->getVar('inputNoWA'),
+    //   'noHP' => $this->request->getVar('inputSMS'),
+    //   'switchWA' => $this->request->getVar('switchWA'),
+    //   'switchSMS' => $this->request->getVar('switchSMS')
+    // ]);
+    // return redirect()->to(base_url('/pengaturan'));
+    dd($this->request->getVar());
+  }
 }

@@ -21,32 +21,47 @@ use Psr\Log\LoggerInterface;
  */
 class BaseController extends Controller
 {
-    /**
-     * Instance of the main Request object.
-     *
-     * @var CLIRequest|IncomingRequest
-     */
-    protected $request;
+  /* CHECK STOK */
+  public function checkAndSend($id)
+  {
+    # variabels...
+    $barang = $this->barangModel->where('id', $id);
+    $switch = $this->pengaturanModel->where('idProfil', '2')->first();
 
-    /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
-     * @var array
-     */
-    protected $helpers = ['url'];
+    if ($barang->stok < 5) {
+      // SEND ALERT TO WA or SMS
+      if ($switch['switchWA'] || $switch['switchSMS'] == 1) {
+        //SEND ALERT SMS or WA
 
-    /**
-     * Constructor.
-     */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
-        // Do Not Edit This Line
-        parent::initController($request, $response, $logger);
-
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+      }
     }
+  }
+  /**
+   * Instance of the main Request object.
+   *
+   * @var CLIRequest|IncomingRequest
+   */
+  protected $request;
+
+  /**
+   * An array of helpers to be loaded automatically upon
+   * class instantiation. These helpers will be available
+   * to all other controllers that extend BaseController.
+   *
+   * @var array
+   */
+  protected $helpers = ['url'];
+
+  /**
+   * Constructor.
+   */
+  public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+  {
+    // Do Not Edit This Line
+    parent::initController($request, $response, $logger);
+
+    // Preload any models, libraries, etc, here.
+
+    // E.g.: $this->session = \Config\Services::session();
+  }
 }
