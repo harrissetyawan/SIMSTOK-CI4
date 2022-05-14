@@ -19,17 +19,27 @@ class Pengaturan extends BaseController
     return view('layout/pengaturan', $data);
     // dd($data['profil']);
   }
-  public function update($id)
+  public function updSet($id)
   {
-    // $this->pengaturanModel->save($id, [
-    //   'namaProfil' => $this->request->getVar('inputNamaToko'),
-    //   'alamatProfil' => $this->request->getVar('alamat'),
-    //   'noWA' => $this->request->getVar('inputNoWA'),
-    //   'noHP' => $this->request->getVar('inputSMS'),
-    //   'switchWA' => $this->request->getVar('switchWA'),
-    //   'switchSMS' => $this->request->getVar('switchSMS')
-    // ]);
-    // return redirect()->to(base_url('/pengaturan'));
-    dd($this->request->getVar());
+    if ($this->request->getVar('switchWA')  == true) {
+      $switchWA = "true";
+    } else {
+      $switchWA = "false";
+    }
+    if ($this->request->getVar('switchSMS')  == true) {
+      $switchSMS = "true";
+    } else {
+      $switchSMS = "false";
+    }
+    $this->pengaturanModel->update($id, [
+      'namaProfil' => $this->request->getVar('inputNamaToko'),
+      'alamatProfil' => $this->request->getVar('alamat'),
+      'noWA' => $this->request->getVar('inputNoWA'),
+      'noHP' => $this->request->getVar('inputSMS'),
+      'switchWA' => $switchWA,
+      'switchSMS' => $switchSMS
+    ]);
+    return redirect()->to(base_url('/pengaturan'));
+    // dd($this->request->getVar(), $switchWA, $switchSMS);
   }
 }

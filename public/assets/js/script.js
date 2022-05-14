@@ -6,6 +6,22 @@ jQuery(function () {
   "info": false,
   "searching": false,
  });
+
+ $('#switchSMS').on('change', function (e) {
+  const checkFalse = '<input value="false" name="hiddenCheckSMSFalse" type="hidden">';
+  const checkTrue = '<input value="true" name="hiddenCheckWATrue" type="hidden">';
+
+  if (e.target.checked == false) {
+   $(checkFalse).appendTo('#form');
+  } else if (e.target.checked == true) {
+   $('[name="hiddenCheckSMSFalse"]').remove();
+   $('#switchSMS').val(e.target.checked);
+  }
+ });
+
+
+
+
  $(document).on('loaded.bs.select changed.bs.select', '#selectOptNamaBrg', function () {
 
   const nama = $('#selectOptNamaBrg option:selected').data('nama');

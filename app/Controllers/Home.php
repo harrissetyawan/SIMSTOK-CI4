@@ -7,11 +7,13 @@ use App\Models\supplierModel;
 use App\Models\kategoriModel;
 use App\Models\unitModel;
 use App\Models\merkModel;
+use App\Models\pengaturanModel;
 
 class Home extends BaseController
 {
     protected $barangModel;
     protected $merkModel;
+    protected $pengaturanModel;
     public function __construct()
     {
         $this->barangModel = new barangModel();
@@ -19,6 +21,7 @@ class Home extends BaseController
         $this->kategoriModel = new kategoriModel();
         $this->unitModel = new unitModel();
         $this->merkModel = new merkModel();
+        $this->pengaturanModel = new pengaturanModel();
     }
     public function index()
     {
@@ -88,6 +91,8 @@ class Home extends BaseController
             'deskripsi' => $this->request->getVar('deskripsi'),
             'stok' => $this->request->getVar('inputStokAwal')
         ]);
+
+        $this->checkAndSend($id);
         return redirect()->to(site_url());
         // dd($this->request->getVar('selectOptKat'));
     }
@@ -102,5 +107,9 @@ class Home extends BaseController
             $data = $this->merkModel->findAll();
             echo json_encode($data);
         }
+    }
+    public function gs()
+    {
+        dd($this->pengaturanModel->find(2));
     }
 }

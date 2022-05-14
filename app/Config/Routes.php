@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/gs', 'Home::gs');
 $routes->add('/unitkategori', 'UnitKategori::index');
 // BARANG KELUAR
 $routes->add('/barangkeluar', 'BarangKeluar::index');
@@ -45,10 +46,10 @@ $routes->add('/getBarang', 'BarangMasuk::getBarang');
 $routes->add('/Messages', 'Messages::checkStok');
 
 $routes->add('/pengaturan', 'Pengaturan::index');
-$routes->add('/updateSet/(:segment)', 'Pengaturan::update/$1');
 $routes->get('/supplier', 'Supplier::index');
 
 // ACTION
+$routes->add('/updateSet/(:segment)', 'Pengaturan::updSet/$1');
 $routes->delete('/Home/(:num)', 'Home::delete/$1');
 $routes->delete('/unit/(:num)', 'UnitKategori::deleteUnit/$1');
 $routes->delete('/kategori/(:num)', 'UnitKategori::deleteKategori/$1');
@@ -75,6 +76,7 @@ $routes->add('/delBM/(:segment)', 'BarangMasuk::delete/$1');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
+
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

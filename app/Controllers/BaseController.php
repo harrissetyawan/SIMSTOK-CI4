@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\pengaturanModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -21,18 +22,33 @@ use Psr\Log\LoggerInterface;
  */
 class BaseController extends Controller
 {
+  protected $pengaturanModel;
+  public function __construct()
+  {
+    $this->pengaturanModel = new pengaturanModel();
+  }
   /* CHECK STOK */
   public function checkAndSend($id)
   {
     # variabels...
     $barang = $this->barangModel->where('id', $id);
-    $switch = $this->pengaturanModel->where('idProfil', '2')->first();
+    $switch = $this->pengaturanModel->find(2);
 
     if ($barang->stok < 5) {
-      // SEND ALERT TO WA or SMS
-      if ($switch['switchWA'] || $switch['switchSMS'] == 1) {
-        //SEND ALERT SMS or WA
-
+      foreach ($switch as $key => $value) {
+        # code...
+        switch ($key) {
+          case 'switchWA':
+            if ($value == "true") {
+              d("WA MASUK");
+            }
+            break;
+          case 'switchSMS':
+            if ($value == "true") {
+              d("WA");
+            }
+            break;
+        }
       }
     }
   }

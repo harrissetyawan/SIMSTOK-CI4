@@ -6,7 +6,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link cuz active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profil Toko</a>
         <a class="nav-link cuz" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Nomor Pengingat</a>
-        <button class="btn btn-rounded btn-outline-primary shadow mt-3" form="form">
+        <button class="btn btn-rounded btn-outline-primary shadow mt-3" id="submitBtn" form="form">
           Simpan Perubahan
         </button>
       </div>
@@ -16,7 +16,7 @@
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
           <div class="card">
             <div class="card-body shadow a">
-              <form action="/updateSet/<?php $profil['idProfil'] ?>" method="post" id="form">
+              <form action="/updateSet/<?= $profil['idProfil'] ?>" method="get" id="form" name="form">
                 <div class="row mb-3">
                   <label for="inputNamaToko" class="col-sm-3 ">Nama Toko</label>
                   <div class="col-sm-9">
@@ -47,7 +47,7 @@
                 </div>
               </div>
               <div class="custom-control custom-switch pt-2">
-                <input type="checkbox" class="custom-control-input" id="switchWA" <?php $profil['switchWA'] == '1' ? print 'checked' : '' ?> name="switchWA">
+                <input type="checkbox" class="custom-control-input" id="switchWA" <?php $profil['switchWA'] == 'true' ? print 'checked' : '' ?> name="switchWA">
                 <label class="custom-control-label text-dark" for="switchWA">Aktifkan notifikasi Whatsapp</label>
               </div>
               <div class="row mb-3">
@@ -56,7 +56,7 @@
                 </div>
               </div>
               <div class="custom-control custom-switch pt-2">
-                <input type="checkbox" class="custom-control-input" id="switchSMS" <?php $profil['switchSMS'] == '1' ? print 'checked' : '' ?> name="switchSMS">
+                <input type="checkbox" class="custom-control-input" id="switchSMS" <?php $profil['switchSMS'] == 'true' ? print 'checked' : '' ?> name="switchSMS">
                 <label class="custom-control-label text-dark" for="switchSMS">Aktifkan notifikasi SMS</label>
               </div>
               </form>
