@@ -40,12 +40,12 @@ class BaseController extends Controller
         switch ($key) {
           case 'switchWA':
             if ($value == "true") {
-              d("WA MASUK");
+              print("WA MASUK");
             }
             break;
           case 'switchSMS':
             if ($value == "true") {
-              d("WA");
+              print("WA");
             }
             break;
         }
