@@ -43,8 +43,6 @@ class BarangMasuk extends BaseController
 		$data['supplier'] = $this->supplierModel->findAll();
 		$data['profil'] = $this->pengaturanModel->where('idProfil', '2')->first();
 		return view('actionBM/addPOBM', $data);
-		// dd(random_string('alnum', 6));
-		// dd($data['barang']);
 	}
 	public function post()
 	{
@@ -62,9 +60,9 @@ class BarangMasuk extends BaseController
 			$barang = $request->getVar('namaBarang');
 			$data =  $this->barangModel->where('namaBarang', $barang)->first();
 			echo json_encode($data);
-			// dd($data);
 		}
 	}
+	// --------- NOT CONDITION
 	public function delete($id)
 	{
 		$this->barangMasukModel->delete($id);

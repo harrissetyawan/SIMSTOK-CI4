@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\barangModel;
 use App\Models\pengaturanModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -26,32 +27,54 @@ class BaseController extends Controller
   public function __construct()
   {
     $this->pengaturanModel = new pengaturanModel();
+    $this->barangModel = new barangModel();
   }
+
   /* CHECK STOK */
   public function checkAndSend($id)
   {
     # variabels...
-    $barang = $this->barangModel->where('id', $id);
+    $barang = $this->barangModel->find($id);
     $switch = $this->pengaturanModel->find(2);
 
-    if ($barang->stok < 5) {
-      foreach ($switch as $key => $value) {
-        # code...
-        switch ($key) {
-          case 'switchWA':
-            if ($value == "true") {
-              print("WA MASUK");
-            }
-            break;
-          case 'switchSMS':
-            if ($value == "true") {
-              print("WA");
-            }
-            break;
-        }
+    foreach ($switch as $key => $value) {
+      switch ($key) {
+        case 'switchWA':
+          if ($value == "true") {
+            //CONFIG API
+            $userkey = 'abf6ee3baf8f';
+            $passkey = 'c39570dafb3ed9efa26002b1';
+            $telepon = $switch['noWA'];
+            $message = 'Halo, stok barang ' . $barang['namaBarang'] . ' tersisa ' . $barang['stok'] . ' ' . $barang['unit'] . ' segera lakukan pemesanan!';
+            $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+            $curlHandle = curl_init();
+            curl_setopt($curlHandle, CURLOPT_URL, $url);
+            curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+            curl_setopt($curlHandle, CURLOPT_POST, 1);
+            curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+              'userkey' => $userkey,
+              'passkey' => $passkey,
+              'to' => $telepon,
+              'message' => $message
+            ));
+            $results = json_decode(curl_exec($curlHandle), true);
+            curl_close($curlHandle);
+          }
+          break;
+        case 'switchSMS':
+          if ($value == "true") {
+            print("WA");
+          }
+          break;
       }
     }
   }
+  /* SEND OTP */
+
   /**
    * Instance of the main Request object.
    *

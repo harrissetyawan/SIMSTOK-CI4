@@ -31,37 +31,40 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/gs', 'Home::gs');
-$routes->add('/unitkategori', 'UnitKategori::index');
+$routes->get('/', 'Home::index', ['filter' => 'auth']);
+$routes->get('/logout', 'Login::Logout', ['filter' => 'auth']);
+$routes->get('/login', 'Login::index');
+$routes->get('/resetcode', 'Login::resetRequest');
+$routes->get('/resetform', 'Login::resetForm', ['filter' => 'reset']);
+$routes->add('/unitkategori', 'UnitKategori::index', ['filter' => 'auth']);
 // BARANG KELUAR
-$routes->add('/barangkeluar', 'BarangKeluar::index');
-$routes->add('/addBrgKeluar', 'BarangKeluar::formAdd');
+$routes->add('/barangkeluar', 'BarangKeluar::index', ['filter' => 'auth']);
+$routes->add('/addBrgKeluar', 'BarangKeluar::formAdd', ['filter' => 'auth'], ['filter' => 'auth']);
 
 // BARANG MASUK
-$routes->add('/barangmasuk', 'BarangMasuk::index');
-$routes->add('/addBrgMasuk', 'BarangMasuk::');
-$routes->add('/buatPO', 'BarangMasuk::formAdd');
-$routes->add('/getBarang', 'BarangMasuk::getBarang');
-$routes->add('/Messages', 'Messages::checkStok');
+$routes->add('/barangmasuk', 'BarangMasuk::index', ['filter' => 'auth']);
+$routes->add('/addBrgMasuk', 'BarangMasuk::', ['filter' => 'auth']);
+$routes->add('/buatPO', 'BarangMasuk::formAdd', ['filter' => 'auth']);
+$routes->add('/getBarang', 'BarangMasuk::getBarang', ['filter' => 'auth']);
+$routes->add('/Messages', 'Messages::checkStok', ['filter' => 'auth']);
 
-$routes->add('/pengaturan', 'Pengaturan::index');
-$routes->get('/supplier', 'Supplier::index');
+$routes->add('/pengaturan', 'Pengaturan::index', ['filter' => 'auth']);
+$routes->get('/supplier', 'Supplier::index', ['filter' => 'auth']);
 
 // ACTION
-$routes->add('/updateSet/(:segment)', 'Pengaturan::updSet/$1');
-$routes->delete('/Home/(:num)', 'Home::delete/$1');
-$routes->delete('/unit/(:num)', 'UnitKategori::deleteUnit/$1');
-$routes->delete('/kategori/(:num)', 'UnitKategori::deleteKategori/$1');
-$routes->delete('/deleteMerk/(:num)', 'UnitKategori::deleteMerk/$1');
-$routes->get('/Edit/(:segment)', 'Home::fetchDataUpdate/$1');
-$routes->add('/Update/(:segment)', 'Home::updateData/$1');
-$routes->add('/supp/(:segment)', 'Supplier::delete/$1');
-$routes->add('/editSupp/(:segment)', 'Supplier::fetchDataUpdate/$1');
-$routes->add('/editKat/(:segment)', 'UnitKategori::fetchKat/$1');
-$routes->add('/editUnit/(:segment)', 'UnitKategori::fetchUnit/$1');
-$routes->add('/delBK/(:segment)', 'BarangKeluar::delete/$1');
-$routes->add('/delBM/(:segment)', 'BarangMasuk::delete/$1');
+$routes->add('/updateSet/(:segment)', 'Pengaturan::updSet/$1', ['filter' => 'auth']);
+$routes->delete('/Home/(:num)', 'Home::delete/$1', ['filter' => 'auth']);
+$routes->delete('/unit/(:num)', 'UnitKategori::deleteUnit/$1', ['filter' => 'auth']);
+$routes->delete('/kategori/(:num)', 'UnitKategori::deleteKategori/$1', ['filter' => 'auth']);
+$routes->delete('/deleteMerk/(:num)', 'UnitKategori::deleteMerk/$1', ['filter' => 'auth']);
+$routes->get('/Edit/(:segment)', 'Home::fetchDataUpdate/$1', ['filter' => 'auth']);
+$routes->add('/Update/(:segment)', 'Home::updateData/$1', ['filter' => 'auth']);
+$routes->add('/supp/(:segment)', 'Supplier::delete/$1', ['filter' => 'auth']);
+$routes->add('/editSupp/(:segment)', 'Supplier::fetchDataUpdate/$1', ['filter' => 'auth']);
+$routes->add('/editKat/(:segment)', 'UnitKategori::fetchKat/$1', ['filter' => 'auth']);
+$routes->add('/editUnit/(:segment)', 'UnitKategori::fetchUnit/$1', ['filter' => 'auth']);
+$routes->add('/delBK/(:segment)', 'BarangKeluar::delete/$1', ['filter' => 'auth']);
+$routes->add('/delBM/(:segment)', 'BarangMasuk::delete/$1', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

@@ -31,7 +31,7 @@ class Home extends BaseController
         $data['unit'] = $this->unitModel->findAll();
         $data['kategori'] = $this->kategoriModel->findAll();
         $data['supplier'] = $this->supplierModel->findAll();
-        $data['barang'] = $this->barangModel->paginate('6', 'tablebarang');
+        $data['barang'] = $this->barangModel->paginate('15', 'tablebarang');
         $data['pager'] = $this->barangModel->pager;
         $data['title'] = 'Barang';
         return view('layout/barang', $data);
@@ -80,25 +80,39 @@ class Home extends BaseController
     }
     public function updateData($id)
     {
-        $this->barangModel->update($id, [
-            // 'id' => $this->request->getVar($id),
-            'namaBarang' => $this->request->getVar('inputNamaBarang'),
-            'harga' => $this->request->getVar('inputHarga'),
-            'supplier' => $this->request->getVar('selectOptSupp'),
-            'merk' => $this->request->getVar('selectOptMerk'),
-            'unit' => $this->request->getVar('selectOptUnit'),
-            'kategori' => $this->request->getVar('selectOptKat'),
-            'deskripsi' => $this->request->getVar('deskripsi'),
-            'stok' => $this->request->getVar('inputStokAwal')
-        ]);
-
-        $this->checkAndSend($id);
-        return redirect()->to(site_url());
-        // dd($this->request->getVar('selectOptKat'));
+        if ($this->request->getVar('inputStokAwal') < 5) {
+            $this->barangModel->update($id, [
+                // 'id' => $this->request->getVar($id),
+                'namaBarang' => $this->request->getVar('inputNamaBarang'),
+                'harga' => $this->request->getVar('inputHarga'),
+                'supplier' => $this->request->getVar('selectOptSupp'),
+                'merk' => $this->request->getVar('selectOptMerk'),
+                'unit' => $this->request->getVar('selectOptUnit'),
+                'kategori' => $this->request->getVar('selectOptKat'),
+                'deskripsi' => $this->request->getVar('deskripsi'),
+                'stok' => $this->request->getVar('inputStokAwal')
+            ]);
+            // Update Data, Send Notif & Back Home!
+            $this->checkAndSend($id);
+            return redirect()->to(site_url());
+        } else {
+            $this->barangModel->update($id, [
+                // 'id' => $this->request->getVar($id),
+                'namaBarang' => $this->request->getVar('inputNamaBarang'),
+                'harga' => $this->request->getVar('inputHarga'),
+                'supplier' => $this->request->getVar('selectOptSupp'),
+                'merk' => $this->request->getVar('selectOptMerk'),
+                'unit' => $this->request->getVar('selectOptUnit'),
+                'kategori' => $this->request->getVar('selectOptKat'),
+                'deskripsi' => $this->request->getVar('deskripsi'),
+                'stok' => $this->request->getVar('inputStokAwal')
+            ]);
+            // Update Data & Back Home!
+            return redirect()->to(site_url());
+        }
     }
     public function saveMerk()
     {
-        # code...
         $request = service('request');
         if ($request->isAJAX()) {
             $this->merkModel->save([
@@ -110,6 +124,7 @@ class Home extends BaseController
     }
     public function gs()
     {
-        dd($this->pengaturanModel->find(2));
+        $switch = $this->pengaturanModel->find(2);
+        dd($switch);
     }
 }

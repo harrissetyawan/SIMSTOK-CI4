@@ -34,7 +34,7 @@
 						<a class="nav-link <?= $uri->getSegment(1) == 'pengaturan' ? 'linkactivated' : ''; ?>" id="linkmenu" href="<?= base_url('/pengaturan'); ?>">Pengaturan</a>
 					</li>
 					<li class="nav-item" style="color: var(--white);width: 100px;">
-						<a class="nav-link" href="#" style="color: var(--white);padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;">Keluar
+						<a class="nav-link" href="/logout" style="color: var(--white);padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;">Keluar
 							<i class="fa fa-power-off" style="padding-left: 5px;color: var(--red);"></i>
 						</a>
 					</li>
@@ -98,12 +98,7 @@
 	<script src="/assets/bootstrap/js/popper.min.js"></script>
 	<script src="/assets/bootstrap/js/jquery.dataTables.min.js"></script>
 	<script src="/assets/bootstrap/js/dataTables.bootstrap4.min.js"></script>
-	<!-- <script src="/assets/bootstrap/js/dataTables.buttons.min.js"></script> -->
-	<!-- <script src="/assets/bootstrap/js/buttons.flash.min.js"></script>
-	<script src="/assets/bootstrap/js/jszip.min.js"></script> -->
 	<!-- SDA -->
-
-	<!-- <script src="/assets/js/Off-Canvas-Sidebar-Drawer-Navbar.js"></script> -->
 	<script src="/assets/js/DataTable---Fully-BSS-Editable.js"></script>
 	<script src="/assets/js/Off-Canvas-Sidebar-Drawer-Navbar-1.js"></script>
 	<script src="/assets/js/Dynamic-Table.js"></script>

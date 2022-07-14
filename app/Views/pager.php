@@ -25,12 +25,15 @@
     <?php if ($pager->hasPrevious()) : ?>
       <li class="page-item disabled">
         <a class="page-link" href="<?= $pager->getFirst() ?>" aria-label="<?= lang('Pager.first') ?>">
-          <span class="page-link" aria-hidden="true"><?= lang('Pager.first') ?></span>
+          <span class="page-link" aria-hidden="true">
+            <?= lang('Pager.first') ?></span>
         </a>
       </li>
       <li class="page-item">
         <a href="<?= $pager->getPrevious() ?>" aria-label="<?= lang('Pager.previous') ?>">
-          <span class="page-link" aria-hidden="true"><?= lang('Pager.previous') ?></span>
+          <span class="page-link" aria-hidden="true">
+            <?= lang('Pager.previous') ?>
+          </span>
         </a>
       </li>
     <?php endif ?>

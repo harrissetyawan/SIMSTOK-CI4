@@ -19,8 +19,7 @@ jQuery(function () {
   }
  });
 
-
-
+ // ------------------------------------------ SELECT BARANG
 
  $(document).on('loaded.bs.select changed.bs.select', '#selectOptNamaBrg', function () {
 
@@ -35,7 +34,7 @@ jQuery(function () {
   $('[name=inputUnit]').val(unit);
 
  });
- //--------------PO MAKER
+ //------------------------------------------- PO MAKER
  $(document).on('loaded.bs.select changed.bs.select', '#selectOptSupp', function () {
   const id = $('#selectOptSupp option:selected').data('nama');
   const alamat = $('#selectOptSupp option:selected').data('alamat');
@@ -58,9 +57,13 @@ jQuery(function () {
    success: function (data) {
     var html = '';
     var i;
-    html += '<option selected="true" value="" disabled >Pilih Barang</option>';
-    for (i = 0; i < data.length; i++) {
-     html += '<option>' + data[i].namaBarang + '</option>';
+    if (data.length <= 0) {
+     html += '<option selected="true" value="" disabled>Tidak Ada Barang</option>';
+    } else {
+     html += '<option selected="true" value="" disabled>Pilih Barang</option>';
+     for (i = 0; i < data.length; i++) {
+      html += '<option>' + data[i].namaBarang + '</option>';
+     }
     }
     $('.selBarang').html(html);
    }
