@@ -8,14 +8,14 @@
           <div class="card shadow">
             <div class="card-header py-2">
               <p class="lead text-info m-0">DAFTAR SUPPLIER</p>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#modalSuppAdd" type="button" style="padding-top: 0px;">TAMBAH</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#modalSuppAdd" type="button">TAMBAH</button>
             </div>
             <div class="card-body">
               <div class="table-responsive table mb-0 pt-3 pr-2">
                 <table class="table table-striped table-sm my-0 mydatatable">
                   <thead class="text-left">
                     <tr>
-                      <th style="width: 271.215px;">Nama Supplier</th>
+                      <th style="width: 271px;">Nama Supplier</th>
                       <th style="width: 163px;">Nomor Telepon</th>
                       <th style="width: 361.646px;">Alamat</th>
                       <th style="width: 271.646px;">Keterangan</th>
@@ -31,7 +31,7 @@
                         <td><?= $supp['Keterangan']; ?></td>
                         <!-- ACTION -->
                         <td class="text-center">
-                          <a href="/editSupp/<?= $supp['idSupp']; ?>"><i class="fa fa-pencil"></i></a>
+                          <a href="/editSupp/<?= $supp['idSupp']; ?>"><i class="fa fa-pencil" style="font-size: 22px;color: var(--green);"></i></a>
                           <form action="/supp/<?= $supp['idSupp']; ?>" method="post" style="display: inline; ">
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="pl-1" type="submit" style="color: var(--red);">
@@ -68,7 +68,6 @@
         <div class="container">
           <form action="/Supplier/save" method="POST">
             <?= csrf_field(); ?>
-            <button class="btn btn-primary" type="submit">Save</button>
             <div class="form-group">
               <label for="inputNamaSupp">Nama Supplier</label>
               <input type="text" class="form-control" name="inputNamaSupp" id="inputNamaSupp" aria-describedby="inputNamaSuppHelp">
@@ -87,7 +86,7 @@
             </div>
             <div class="modal-footer">
               <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
-              <!-- <button class="btn btn-primary" type="submit">Save</button> -->
+              <button class="btn btn-primary" type="submit">Save</button>
             </div>
           </form>
         </div>

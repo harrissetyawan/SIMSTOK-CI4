@@ -41,7 +41,7 @@
                         <td><?= $value['deskripsi'] ?></td>
                         <td class="align-content-center d-inline-flex">
                           <a href="/Edit/<?= $value['id']; ?>">
-                            <i class="fa fa-pencil" style="font-size: 22px;padding-right: 7px; cursor: pointer; color: seagreen;"></i>
+                            <i class="fa fa-pencil pr-2" style="font-size: 22px;color: var(--green);"></i>
                           </a>
                           <form action="/Home/<?= $value['id']; ?>" method="POST">
                             <input type="hidden" name="_method" value="DELETE">

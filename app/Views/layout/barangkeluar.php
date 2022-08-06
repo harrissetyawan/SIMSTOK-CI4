@@ -13,6 +13,9 @@
 							</button>
 						</div>
 						<div class="card-body">
+							<div class="mb-1">
+								<?= $pager->links('tablebarang', 'custom_pager') ?>
+							</div>
 							<div class="table-responsive table mb-0 pt-3 pr-2">
 								<table class="table table-striped table-sm my-0 mydatatable">
 									<thead class="text-left">
@@ -22,7 +25,9 @@
 											<th style="width: 48px;">Jumlah</th>
 											<th style="width: 31px;">Unit</th>
 											<th style="width: 79px;">Supplier</th>
-											<th class="text-center" style="width: 31.723px;"><i class="fa fa-gears" style="font-size: 22px;"></i></th>
+											<th class="text-center" style="width: 31.723px;">
+												<i class="fa fa-gears" style="font-size: 22px;"></i>
+											</th>
 										</tr>
 									</thead>
 									<tbody>

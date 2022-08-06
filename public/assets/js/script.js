@@ -1,4 +1,43 @@
+function getFormBM(idbm) {
+ $.ajax({
+  url: "/BarangMasuk/fetchUpdateBM",
+  method: "POST",
+  data: {
+   id: idbm
+  },
+  async: false,
+  dataType: 'JSON',
+  success: function (data) {
+   $('[name=editNamaBM]').val(data[0].namaBarang);
+   $('[name=editUnitBM]').val(data[0].unit);
+   $('[name=editJumlahBM]').val(data[0].jumlahBarang);
+   $('[name=editTanggalBM]').val(data[0].tanggalMasuk);
+   $('#formEditBM').attr('action', '/updateBM/' + data[0].idBrgMasuk + '')
+  }
+ });
+}
 jQuery(function () {
+
+
+ $('#editButtonBM').on('click', function () {
+  const idBM = $('#editButtonBM').data('idbm');
+
+  $.ajax({
+   url: "/BarangMasuk/fetchUpdateBM",
+   method: "POST",
+   data: {
+    id: idBM
+   },
+   async: false,
+   dataType: 'json',
+   success: function (data) {
+    $('[name=editNamaBM]').val(data[0].namaBarang);
+    $('[name=editUnitBM]').val(data[0].unit);
+    $('[name=editJumlahBM]').val(data[0].jumlahBarang);
+    $('[name=editTanggalBM]').val(data[0].tanggalMasuk);
+   }
+  });
+ });
 
  var purchase = $('#purchase').DataTable({
   "paging": false,
@@ -19,7 +58,18 @@ jQuery(function () {
   }
  });
 
- // ------------------------------------------ SELECT BARANG
+ // ------------------------------------------ SELECT BARANG BM
+ $(document).on('loaded.bs.select change.bs.select', '#inputNamaBM', function () {
+
+  const stok = $('#inputNamaBM option:selected').data('stok');
+  const supps = $('#inputNamaBM option:selected').data('supp');
+  const unit = $('#inputNamaBM option:selected').data('unit');
+
+  $('[name=inputSupplierBM]').val(supps);
+  $('[name=inputStokBM]').val(stok);
+  $('[name=inputUnitBM]').val(unit);
+ });
+ // ------------------------------------------ SELECT BARANG PO
 
  $(document).on('loaded.bs.select changed.bs.select', '#selectOptNamaBrg', function () {
 
@@ -172,21 +222,33 @@ jQuery(function () {
   $('#grandtotal').val(grandtotal);
  }
 
- // $('#poContent').DataTable({
- //  buttons: [{
- //   extend: 'print',
- //  }]
- // })
- // DATEPICKER
+ // DATEPICKER FORMAT DATE
  var date = new Date();
  var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+ // ADD BK DATE
  $("#datepicker").datepicker({
   format: 'yyyy-mm-dd',
   autoclose: true,
   todayHighlight: true,
-
  });
  $('#datepicker').datepicker('setDate', today);
+
+ // ADD BM DATE
+ $("#inputTanggalBM").datepicker({
+  format: 'yyyy-mm-dd',
+  autoclose: true,
+  todayHighlight: true,
+ });
+
+ $('#inputTanggalBM').datepicker('setDate', today);
+
+ // ADD BM EDIT DATE
+ $("#editTanggalBM").datepicker({
+  format: 'yyyy-mm-dd',
+  autoclose: true,
+  todayHighlight: true,
+ });
 
  //MAKE RUPIAH FORMAT
  var rupiah = document.getElementById('inputHarga');

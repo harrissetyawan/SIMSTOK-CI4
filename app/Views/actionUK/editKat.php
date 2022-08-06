@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <form action="/UnitKategori/updateKat/<?= $kategori['idKategori']; ?>" method="POST" class="justify-content-center">
         <div class="form-group">
-          <label for="inputNamaSupp">Nama Supplier</label>
+          <label for="inputNamaSupp">Nama Kategori</label>
           <input type="text" class="form-control" name="inputNamaKat" id="inputNamaKat" aria-describedby="namaKatHelp" value="<?= $kategori['namaKategori']; ?>">
         </div>
         <div class="form-floating">

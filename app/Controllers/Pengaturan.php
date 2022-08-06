@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\pengaturanModel;
+use Psr\Log\Test\DummyTest;
 
 class Pengaturan extends BaseController
 {
@@ -41,5 +42,10 @@ class Pengaturan extends BaseController
     ]);
     return redirect()->to(base_url('/pengaturan'));
     // dd($this->request->getVar(), $switchWA, $switchSMS);
+  }
+  public function gs()
+  {
+    $switch = $this->pengaturanModel->find(2);
+    print_r($switch);
   }
 }

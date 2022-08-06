@@ -20,7 +20,10 @@
                     <tr>
                       <th style="width: 28px;">Nama Kategori</th>
                       <th style="width: 43px;">Keterangan</th>
-                      <th class="text-center flex-row justify-content-center" style="width: 40.723px;"><i class="fa fa-gears" style="font-size: 25px;"></i></th>
+                      <th class="text-center flex-row justify-content-center" style="width: 40.723px;">
+                        <i class="fa fa-gears" style="font-size: 25px;">
+                        </i>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -30,7 +33,7 @@
                         <td class="d-inline-block text-truncate" style="max-width: 113px;"><?= $k['Keterangan']; ?></td>
                         <td class="text-center">
                           <a href="/editKat/<?= $k['idKategori']; ?>">
-                            <i class="fa fa-edit" style="font-size: 22px;padding-right: 5px;"></i>
+                            <i class="fa fa-pencil pr-2" style="font-size: 22px;color: var(--green);"></i>
                           </a>
                           <form action="/kategori/<?= $k['idKategori']; ?>" method="post" style="display: inline;">
                             <input type="hidden" name="_method" value="DELETE">
@@ -76,7 +79,7 @@
                         <td><?= $m['namaMerk']; ?></td>
                         <td class="text-center">
                           <a href="/fetchMerk/<?= $m['idMerk']; ?>">
-                            <i class="fa fa-edit" style="font-size: 22px;padding-right: 5px;"></i>
+                            <i class="fa fa-pencil pr-2" style="font-size: 22px;color: var(--green);"></i>
                           </a>
                           <form action="/deleteMerk/<?= $m['idMerk']; ?>" method="post" style="display: inline;">
                             <input type="hidden" name="_method" value="DELETE">
@@ -106,7 +109,6 @@
           <div class="card shadow">
             <div class="card-header flex-column py-2">
               <p class="lead text-info m-0" style="width: 100%;padding-bottom: 4px;">DAFTAR UNIT</p>
-              <!-- <button class="btn btn-primary" type="button" style="padding-top: 0px;" data-toggle="modal" data-target="#modalSaveUnit">TAMBAH</button> -->
             </div>
             <div class="card-body" style="padding: 10px;">
               <div class="table-responsive table mb-0 pt-3 pr-2">
@@ -127,7 +129,7 @@
                         <td><?= $u['keterangan']; ?></td>
                         <td class="text-center">
                           <a href="/editUnit/<?= $u['idUnit']; ?>">
-                            <i class="fa fa-edit" style="font-size: 22px;padding-right: 5px;"></i>
+                            <i class="fa fa-pencil pr-2" style="font-size: 22px;color: var(--green);"></i>
                           </a>
                           <form action="/unit/<?= $u['idUnit']; ?>" method="post" style="display: inline;">
                             <input type="hidden" name="_method" value="DELETE">
@@ -150,53 +152,6 @@
       </div>
     </div>
   </section>
-  <!-- <section id="tbMerk" class="mt-4" style="width: 535px;">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <div class="card shadow">
-            <div class="card-header flex-column py-2">
-              <p class="lead text-info m-0" style="width: 100%;padding-bottom: 4px;">DAFTAR MERK</p><button class="btn btn-primary" type="button" style="padding-top: 0px;" data-toggle="modal" data-target="#modalSaveMerk">TAMBAH</button>
-            </div>
-            <div class="card-body" style="padding: 10px;">
-              <div class="table-responsive table mb-0 pt-3 pr-2">
-                <table class="table table-striped table-sm my-0 mydatatable">
-                  <thead class="text-left">
-                    <tr>
-                      <th style="width: 89px;">Nama Merk</th>
-                      <th class="text-center flex-row justify-content-center" style="width: 40.723px;">
-                        <i class="fa fa-gears" style="font-size: 25px;"></i>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($merk as $u) : ?>
-                      <tr>
-                        <td><?= $u['namaMerk']; ?></td>
-                        <td class="text-center">
-                          <a href="/editUnit/<?= $u['idMerk']; ?>">
-                            <i class="fa fa-edit" style="font-size: 22px;padding-right: 5px;"></i>
-                          </a>
-                          <form action="/unit/<?= $u['idMerk']; ?>" method="post" style="display: inline;">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" style="color: var(--red);">
-                              <i class="fa fa-trash-o" style="font-size: 22px;"></i>
-                            </button>
-                          </form>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                </table>
-                <div class="pt-2">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 </div>
 <!-- MODAL SAVE DATA UNIT -->
 <div class="modal fade" role="dialog" tabindex="-1" id="modalSaveUnit" aria-labelledby="modalSaveUnit" aria-hidden="true">

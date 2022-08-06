@@ -12,7 +12,7 @@
               <p class="lead text-info m-0">No. PO00<?= random_string('numeric', 5); ?></p>
             </div>
             <div class="card-body">
-              <form method="" action="/BarangMasuk/addBarangMasuk">
+              <form method="POST" action="/barangmasuk">
                 <div class="form-flex">
                   <input placeholder="Masukan Tanggal" type="text" class="form-control form-control-plaintext col-sm-2 datepicker" id="datepicker" name="tglBarangKeluar">
                   <div class="d-flex justify-content-between">
@@ -84,7 +84,7 @@
                       <button id='addpurchase' class="btn btn-info" type="button">
                         <span class="fa fa-plus"></span>Tambah Produk</button>
                       <button id="send" onclick="window.print()" class="btn btn-success">
-                        Simpan
+                        Cetak
                       </button>
                     </div>
                   </div>

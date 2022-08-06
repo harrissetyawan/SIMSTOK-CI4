@@ -30,15 +30,8 @@ class UnitKategori extends BaseController
 
     return view('layout/unitkategori', $data);
   }
-  // FETCH DATA UTK UPDATE
-  public function fetchKat($id)
-  {
-    $data['kategori'] = $this->kategoriModel->find($id);
-    $data['title'] = 'Ubah Data';
-    $data['uri'] = service('uri');
 
-    return view('/actionUK/editKat', $data);
-  }
+  // METHOD FOR MERK
   public function fetchMerk($id)
   {
     $data['merk'] = $this->merkModel->find($id);
@@ -47,6 +40,14 @@ class UnitKategori extends BaseController
 
     return view('/actionUK/editMerk', $data);
   }
+  public function updateMerk($id)
+  {
+    $this->merkModel->update($id, [
+      'namaMerk' => $this->request->getVar('inputNamaUnit')
+    ]);
+    return redirect()->to(base_url('/unitkategori'));
+  }
+  // METHOD UTK UNIT
   public function fetchUnit($id)
   {
     $data['unit'] = $this->unitModel->find($id);
@@ -55,8 +56,6 @@ class UnitKategori extends BaseController
 
     return view('/actionUK/editUnit', $data);
   }
-
-  // METHOD UTK UNIT
   public function saveUnit()
   {
     $this->unitModel->save([
@@ -65,7 +64,19 @@ class UnitKategori extends BaseController
     ]);
     return redirect()->to(base_url('unitkategori'));
   }
-
+  public function updateUnit($id)
+  {
+    $this->unitModel->update($id, [
+      'namaUnit' => $this->request->getVar('inputNamaUnit'),
+      'keterangan' => $this->request->getVar('deskUnit')
+    ]);
+    return redirect()->to(base_url('/unitkategori'));
+  }
+  public function deleteMerk($id)
+  {
+    $this->merkModel->delete($id);
+    return redirect()->to(base_url('unitkategori'));
+  }
   public function deleteUnit($id)
   {
     $this->unitModel->delete($id);
@@ -96,7 +107,6 @@ class UnitKategori extends BaseController
       return redirect()->to(base_url('unitkategori'));
     }
   }
-
   public function updateKat($id)
   {
     $this->kategoriModel->update($id, [
@@ -105,23 +115,17 @@ class UnitKategori extends BaseController
     ]);
     return redirect()->to(base_url('/unitkategori'));
   }
-
-  public function updateUnit($id)
+  public function fetchKat($id)
   {
-    $this->unitModel->update($id, [
-      'namaUnit' => $this->request->getVar('inputNamaUnit'),
-      'keterangan' => $this->request->getVar('deskUnit')
-    ]);
-    return redirect()->to(base_url('/unitkategori'));
+    $data['kategori'] = $this->kategoriModel->find($id);
+    $data['title'] = 'Ubah Data';
+    $data['uri'] = service('uri');
+
+    return view('/actionUK/editKat', $data);
   }
   public function deleteKategori($id)
   {
     $this->kategoriModel->delete($id);
-    return redirect()->to(base_url('unitkategori'));
-  }
-  public function deleteMerk($id)
-  {
-    $this->merkModel->delete($id);
     return redirect()->to(base_url('unitkategori'));
   }
 }

@@ -18,9 +18,6 @@ class barangModel extends Model
       ->join('tableunit', 'tableunit.idUnit = tablebarang.unit')
       ->join('tablemerk', 'tablemerk.idMerk = tablebarang.merk')
       ->get()->getResultArray();
-    // $query = $builder->get();
-    // return $query->getResult();
-    // return $query;
   }
   function getUpdate($id)
   {

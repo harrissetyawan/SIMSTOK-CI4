@@ -30,7 +30,10 @@ class BarangMasuk extends BaseController
 	{
 		$data['title'] = 'Barang Masuk';
 		$data['uri'] = service('uri');
-		$data['brgMasuk'] = $this->barangMasukModel->findAll();
+		$data['brgMasuk'] = $this->barangMasukModel->paginate(10, 'tablebrgmasuk');
+		$data['supps'] = $this->supplierModel->findAll();
+		$data['barang'] = $this->barangModel->findAll();
+		$data['pagerBM'] = $this->barangMasukModel->pager;
 		return view('layout/barangmasuk', $data);
 	}
 	public function formAdd()
@@ -62,10 +65,37 @@ class BarangMasuk extends BaseController
 			echo json_encode($data);
 		}
 	}
-	// --------- NOT CONDITION
+
 	public function delete($id)
 	{
 		$this->barangMasukModel->delete($id);
+		return redirect()->to(base_url('/barangmasuk'));
+	}
+	public function insertBM()
+	{
+		$this->barangMasukModel->save([
+			'namaBarang' => $this->request->getVar('inputNamaBM'),
+			'jumlahBarang' => $this->request->getVar('inputJumlahBM'),
+			'unit' => $this->request->getVar('inputUnitBM'),
+			'namaSupp' => $this->request->getVar('inputSupplierBM'),
+			'tanggalMasuk' => $this->request->getVar('inputTanggalBM'),
+		]);
+		return redirect()->to(base_url('/barangmasuk'));
+	}
+	public function fetchUpdateBM()
+	{
+		if ($this->request->isAJAX()) {
+			$id = $this->request->getVar('id');
+			$data =  $this->barangMasukModel->fetchModelBM($id);
+			echo json_encode($data);
+		}
+	}
+	public function updateBM($id)
+	{
+		$this->barangMasukModel->update($id, [
+			'jumlahBarang' => $this->request->getVar('editJumlahBM'),
+			'tanggalMasuk' => $this->request->getVar('editTanggalBM')
+		]);
 		return redirect()->to(base_url('/barangmasuk'));
 	}
 }

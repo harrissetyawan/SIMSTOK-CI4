@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\barangKeluarModel;
 use App\Models\barangModel;
 use App\Models\pengaturanModel;
 use CodeIgniter\Controller;
@@ -21,6 +22,7 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
+
 class BaseController extends Controller
 {
   protected $pengaturanModel;
@@ -28,12 +30,69 @@ class BaseController extends Controller
   {
     $this->pengaturanModel = new pengaturanModel();
     $this->barangModel = new barangModel();
+    $this->barangKeluarModel = new barangKeluarModel();
   }
 
-  /* CHECK STOK */
+  /* CHECK STOK DEFINE STOK FROM TABLE BARANG */
+  public function checkAndSendBK($id)
+  {
+    $idBK = $this->barangKeluarModel->find($id);
+    $barang = $this->barangModel->where('namaBarang', $idBK['namaBarang'])->first();
+    $switch = $this->pengaturanModel->find(2);
+
+
+    foreach ($switch as $kolom => $value) {
+      switch ($kolom) {
+        case 'switchWA':
+          if ($value == "true") {
+
+            $userkey = 'abf6ee3baf8f';
+            $passkey = 'c39570dafb3ed9efa26002b1';
+            $telepon = $switch['noWA'];
+            $message = 'Halo, stok barang ' . $barang['namaBarang'] . ' tersisa ' . $barang['stok'] . ' ' . $barang['unit'] . ' segera lakukan pemesanan!';
+            $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+            $curlHandle = curl_init();
+            curl_setopt($curlHandle, CURLOPT_URL, $url);
+            curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+            curl_setopt($curlHandle, CURLOPT_POST, 1);
+            curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+              'userkey' => $userkey,
+              'passkey' => $passkey,
+              'to' => $telepon,
+              'message' => $message
+            ));
+            $results = json_decode(curl_exec($curlHandle), true);
+            curl_close($curlHandle);
+          }
+          break;
+        case 'switchSMS':
+          if ($value == 'true') {
+            $teleponSMS = $switch['noHP'];
+            $messageSMS = 'Halo, stok barang ' . $barang['namaBarang'] . ' tersisa ' . $barang['stok'] . ' ' . $barang['unit'] . ' segera lakukan pemesanan!';
+            $token = '482e5dc10b6900f3351c4df77c6013cf';
+            $urlSMS = 'https://websms.co.id/api/smsgateway?token=' . $token . '&to=' . $teleponSMS . '&msg=' . $messageSMS . '';
+            $header = array(
+              'Accept: application/json',
+            );
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $urlSMS);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+            $result = curl_exec($ch);
+          }
+          break;
+      }
+    }
+  }
+  /* CHECK STOK DEFINE STOK FROM TABLE BARANG */
   public function checkAndSend($id)
   {
-    # variabels...
     $barang = $this->barangModel->find($id);
     $switch = $this->pengaturanModel->find(2);
 
@@ -66,8 +125,22 @@ class BaseController extends Controller
           }
           break;
         case 'switchSMS':
-          if ($value == "true") {
-            print("WA");
+          if ($value == 'true') {
+            $teleponSMS = $switch['noHP'];
+            $messageSMS = 'Halo, stok barang ' . $barang['namaBarang'] . ' tersisa ' . $barang['stok'] . ' ' . $barang['unit'] . ' segera lakukan pemesanan!';
+            $token = '482e5dc10b6900f3351c4df77c6013cf';
+            $urlSMS = 'https://websms.co.id/api/smsgateway?token=' . $token . '&to=' . $teleponSMS . '&msg=' . $messageSMS . '';
+            $header = array(
+              'Accept: application/json',
+            );
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $urlSMS);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+            $result = curl_exec($ch);
+            echo $result;
           }
           break;
       }

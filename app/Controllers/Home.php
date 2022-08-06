@@ -35,8 +35,6 @@ class Home extends BaseController
         $data['pager'] = $this->barangModel->pager;
         $data['title'] = 'Barang';
         return view('layout/barang', $data);
-        // dd($data['kategori']);
-        // dd(number_to_currency(2000000, 'IDR', 'id_ID', 0));
     }
 
     public function save()
@@ -121,10 +119,5 @@ class Home extends BaseController
             $data = $this->merkModel->findAll();
             echo json_encode($data);
         }
-    }
-    public function gs()
-    {
-        $switch = $this->pengaturanModel->find(2);
-        dd($switch);
     }
 }

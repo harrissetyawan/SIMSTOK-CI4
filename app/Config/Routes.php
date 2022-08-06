@@ -37,12 +37,14 @@ $routes->get('/login', 'Login::index');
 $routes->get('/resetcode', 'Login::resetRequest');
 $routes->get('/resetform', 'Login::resetForm', ['filter' => 'reset']);
 $routes->add('/unitkategori', 'UnitKategori::index', ['filter' => 'auth']);
+$routes->add('/gs', 'Pengaturan::gs');
 // BARANG KELUAR
 $routes->add('/barangkeluar', 'BarangKeluar::index', ['filter' => 'auth']);
 $routes->add('/addBrgKeluar', 'BarangKeluar::formAdd', ['filter' => 'auth'], ['filter' => 'auth']);
 
 // BARANG MASUK
 $routes->add('/barangmasuk', 'BarangMasuk::index', ['filter' => 'auth']);
+$routes->add('/updateBM/(:num)', 'BarangMasuk::updateBM/$1', ['filter' => 'auth']);
 $routes->add('/addBrgMasuk', 'BarangMasuk::', ['filter' => 'auth']);
 $routes->add('/buatPO', 'BarangMasuk::formAdd', ['filter' => 'auth']);
 $routes->add('/getBarang', 'BarangMasuk::getBarang', ['filter' => 'auth']);
@@ -53,6 +55,9 @@ $routes->get('/supplier', 'Supplier::index', ['filter' => 'auth']);
 
 // ACTION
 $routes->add('/updateSet/(:segment)', 'Pengaturan::updSet/$1', ['filter' => 'auth']);
+$routes->get('/fetchMerk/(:num)', 'UnitKategori::fetchMerk/$1', ['filter' => 'auth']);
+$routes->get('/updateMerk/(:num)', 'UnitKategori::updateMerk/$1', ['filter' => 'auth']);
+
 $routes->delete('/Home/(:num)', 'Home::delete/$1', ['filter' => 'auth']);
 $routes->delete('/unit/(:num)', 'UnitKategori::deleteUnit/$1', ['filter' => 'auth']);
 $routes->delete('/kategori/(:num)', 'UnitKategori::deleteKategori/$1', ['filter' => 'auth']);
