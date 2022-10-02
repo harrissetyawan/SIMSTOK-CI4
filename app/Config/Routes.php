@@ -38,6 +38,7 @@ $routes->get('/resetcode', 'Login::resetRequest');
 $routes->get('/resetform', 'Login::resetForm', ['filter' => 'reset']);
 $routes->add('/unitkategori', 'UnitKategori::index', ['filter' => 'auth']);
 $routes->add('/gs', 'Pengaturan::gs');
+
 // BARANG KELUAR
 $routes->add('/barangkeluar', 'BarangKeluar::index', ['filter' => 'auth']);
 $routes->add('/addBrgKeluar', 'BarangKeluar::formAdd', ['filter' => 'auth'], ['filter' => 'auth']);
@@ -49,11 +50,16 @@ $routes->add('/addBrgMasuk', 'BarangMasuk::', ['filter' => 'auth']);
 $routes->add('/buatPO', 'BarangMasuk::formAdd', ['filter' => 'auth']);
 $routes->add('/getBarang', 'BarangMasuk::getBarang', ['filter' => 'auth']);
 $routes->add('/Messages', 'Messages::checkStok', ['filter' => 'auth']);
+$routes->add('/InsertBM', 'BarangMasuk::insertBM', ['filter' => 'auth']);
 
 $routes->add('/pengaturan', 'Pengaturan::index', ['filter' => 'auth']);
 $routes->get('/supplier', 'Supplier::index', ['filter' => 'auth']);
 
 // ACTION
+$routes->add('/saveDataBarang', 'Home::save', ['filter' => 'auth']);
+$routes->add('/saveUK', 'UnitKategori::saveData', ['filter' => 'auth']);
+$routes->add('/saveBK', 'BarangKeluar::addBarangKeluar', ['filter' => 'auth']);
+$routes->add('/saveSupp', 'Supplier::save', ['filter' => 'auth']);
 $routes->add('/updateSet/(:segment)', 'Pengaturan::updSet/$1', ['filter' => 'auth']);
 $routes->get('/fetchMerk/(:num)', 'UnitKategori::fetchMerk/$1', ['filter' => 'auth']);
 $routes->get('/updateMerk/(:num)', 'UnitKategori::updateMerk/$1', ['filter' => 'auth']);
@@ -70,6 +76,12 @@ $routes->add('/editKat/(:segment)', 'UnitKategori::fetchKat/$1', ['filter' => 'a
 $routes->add('/editUnit/(:segment)', 'UnitKategori::fetchUnit/$1', ['filter' => 'auth']);
 $routes->add('/delBK/(:segment)', 'BarangKeluar::delete/$1', ['filter' => 'auth']);
 $routes->add('/delBM/(:segment)', 'BarangMasuk::delete/$1', ['filter' => 'auth']);
+
+// AJAX CALL
+
+$routes->post('/getFormBM', 'BarangMasuk::fetchUpdateBM', ['filter' => 'auth']);
+$routes->post('/fetchUpdateBM', 'BarangMasuk::fetchUpdateBM', ['filter' => 'auth']);
+$routes->post('/getDataPO', 'BarangMasuk::post', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

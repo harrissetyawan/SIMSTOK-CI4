@@ -78,7 +78,7 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form action="/BarangMasuk/insertBM" method="POST" id="formAddBM">
+          <form action="/InsertBM" method="POST" id="formAddBM">
             <?= csrf_field(); ?>
             <div class="form-group">
               <label for="inputNamaBM">Nama Barang</label>

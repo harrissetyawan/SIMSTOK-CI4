@@ -26,7 +26,7 @@ class UnitKategori extends BaseController
     $data['kategori'] = $this->kategoriModel->paginate(7, 'tablekategori');
     $data['pagerKat'] = $this->kategoriModel->pager;
     $data['merk'] = $this->merkModel->paginate(7, 'tablemerk');
-    $data['pagermerk'] = $this->merkModel->pager;
+    $data['pagerMerk'] = $this->merkModel->pager;
 
     return view('layout/unitkategori', $data);
   }
@@ -91,21 +91,20 @@ class UnitKategori extends BaseController
         'namaKategori' => $this->request->getVar('inputNamaKat'),
         'Keterangan' => $this->request->getVar('deskripsiKat')
       ]);
-      return redirect()->to(base_url('unitkategori'));
     }
     if ($this->request->getVar('inputNamaUnit') !== '') {
       $this->unitModel->save([
         'namaUnit' => $this->request->getVar('inputNamaUnit'),
         'keterangan' => $this->request->getVar('deskripsiUnit')
       ]);
-      return redirect()->to(base_url('unitkategori'));
     }
     if ($this->request->getVar('inputNamaMerk') !== '') {
       $this->merkModel->save([
         'namaMerk' => $this->request->getVar('inputNamaMerk')
       ]);
-      return redirect()->to(base_url('unitkategori'));
+      
     }
+    return redirect()->to(base_url('unitkategori'));
   }
   public function updateKat($id)
   {
@@ -113,6 +112,7 @@ class UnitKategori extends BaseController
       'namaKategori' => $this->request->getVar('inputNamaKat'),
       'Keterangan' => $this->request->getVar('deskripsi')
     ]);
+
     return redirect()->to(base_url('/unitkategori'));
   }
   public function fetchKat($id)

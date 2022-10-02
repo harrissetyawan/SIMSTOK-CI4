@@ -9,7 +9,7 @@
             <div class="card-header justify-content-between py-2">
               <p class="lead text-info m-0">TAMBAH BARANG KELUAR</p>
               <label></label>
-              <form method="POST" action="/BarangKeluar/addBarangKeluar">
+              <form method="POST" action="/saveBK">
                 <div class="input-group date">
                   <input placeholder="Masukan Tanggal" type="text" class="form-control col-sm-2 datepicker" id="datepicker" name="tglBarangKeluar">
                 </div>

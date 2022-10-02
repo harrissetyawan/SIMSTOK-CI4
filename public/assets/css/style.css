@@ -31,7 +31,7 @@ a.nav-link#linkmenu:hover {
 }
 .navMenuBtn {
   text-decoration: none;
-  color: #1B120F;
+  color: #1b120f;
 }
 .navMenuBtn:hover {
   text-decoration: none;
@@ -50,7 +50,7 @@ a.nav-link#linkmenu:hover {
 .nav-pills .show > .nav-link {
   color: #272727;
   text-decoration: solid;
-  background-color: #F89D13;
+  background-color: #f89d13;
 }
 .group {
   position: relative;
@@ -71,7 +71,7 @@ input:focus ~ label,
 input:valid ~ label {
   top: -20px;
   font-size: 14px;
-  color: #F89D13;
+  color: #f89d13;
 }
 .bar {
   position: relative;
@@ -80,12 +80,12 @@ input:valid ~ label {
 }
 .bar:before,
 .bar:after {
-  content: '';
+  content: "";
   height: 2px;
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #F89D13;
+  background: #f89d13;
   transition: 0.2s ease all;
 }
 .bar:before {

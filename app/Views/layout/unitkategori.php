@@ -93,7 +93,7 @@
                   </tbody>
                 </table>
                 <div class="pt-2">
-                  <?= $pagerKat->links('tablekategori', 'custom_pager') ?>
+                  <?= $pagerMerk->links('tablemerk', 'custom_pager') ?>
                 </div>
               </div>
             </div>
@@ -153,8 +153,8 @@
     </div>
   </section>
 </div>
-<!-- MODAL SAVE DATA UNIT -->
-<div class="modal fade" role="dialog" tabindex="-1" id="modalSaveUnit" aria-labelledby="modalSaveUnit" aria-hidden="true">
+
+<!-- <div class="modal fade" role="dialog" tabindex="-1" id="modalSaveUnit" aria-labelledby="modalSaveUnit" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -165,7 +165,7 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form action="/UnitKategori/saveUnit" method="POST">
+          <form action="/saveUK" method="POST">
             <?= csrf_field(); ?>
             <div class="form-group">
               <label for="inputNamaUnit">Nama Unit</label>
@@ -185,7 +185,9 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
+
+<!-- MODAL SAVE DATA UNIT -->
 <div class="modal fade" role="dialog" tabindex="-1" id="modalSaveKat" aria-labelledby="modalSaveUnit" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -196,7 +198,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/UnitKategori/saveData" method="POST">
+        <form action="/saveUK" method="POST">
           <div class="">
             <div class="container">
               <?= csrf_field(); ?>

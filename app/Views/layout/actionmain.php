@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
 
@@ -38,7 +39,7 @@
     </div>
   </nav>
   <?= $this->renderSection('content'); ?>
-  <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
   <script src="/assets/js/bootstrap-select.min.js"></script>

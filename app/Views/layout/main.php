@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title><?= $title; ?></title>
-	<link rel="stylesheet/less" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/bootstrap-select.min.css">
 	<link rel="stylesheet" href="/assets/css/bootstrap-datepicker.min.css">
@@ -27,7 +27,8 @@
 		<div class="container">
 			<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
 				<span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-			<a class="navbar-brand" href="/" style="color: var(--orange);"><i class="fa fa-ioxhost pr-2"></i>SIMSTOK TB SANO</a>
+			<a class="navbar-brand" href="/" style="color: var(--orange);">
+			<i class="fa fa-ioxhost pr-2"></i>SIMSTOK TB SANO</a>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item" style="color: var(--white);width: 109px;padding-right: 1px;">

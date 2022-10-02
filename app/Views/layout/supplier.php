@@ -66,7 +66,7 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form action="/Supplier/save" method="POST">
+          <form action="/saveSupp" method="POST">
             <?= csrf_field(); ?>
             <div class="form-group">
               <label for="inputNamaSupp">Nama Supplier</label>
