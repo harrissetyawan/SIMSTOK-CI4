@@ -31,7 +31,9 @@
                         <td><?= $supp['Keterangan']; ?></td>
                         <!-- ACTION -->
                         <td class="text-center">
-                          <a href="/editSupp/<?= $supp['idSupp']; ?>"><i class="fa fa-pencil" style="font-size: 22px;color: var(--green);"></i></a>
+                          <a href="/editSupp/<?= $supp['idSupp']; ?>">
+                            <i class="fa fa-pencil" style="font-size: 22px;color: var(--green);"></i>
+                          </a>
                           <form action="/supp/<?= $supp['idSupp']; ?>" method="post" style="display: inline; ">
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="pl-1" type="submit" style="color: var(--red);">

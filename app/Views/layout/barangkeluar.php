@@ -11,6 +11,9 @@
 							<button class="btn btn-primary" type="button">
 								<a href="/addBrgKeluar" style="color: aliceblue; text-decoration: none;">TAMBAH</a>
 							</button>
+							<button class="btn btn-warning" type="button" data-toggle="modal" data-target="#modalReportBK" id="reportBtn">
+								REPORT
+							</button>
 						</div>
 						<div class="card-body">
 							<div class="mb-1">
@@ -106,6 +109,8 @@
 		</div>
 	</div>
 </div>
+
+<!-- MODAL EDIT -->
 <div class="modal fade" role="dialog" tabindex="-1" id="modalEdit">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -159,6 +164,52 @@
 				</div>
 			</div>
 			<div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+		</div>
+	</div>
+</div>
+
+<!-- MODAL REPORT BK -->
+<div class="modal fade" role="dialog" tabindex="-1" id="modalReportBK">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Laporan Penjualan</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="button-header">
+			</div>
+			<div class="modal-body">
+				<button onclick="window.print()" id="btn-print" type="button" class="btn btn-info" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">Print</span>
+				</button>
+				<div class="table-responsive table mb-0 pt-3 pr-2">
+					<table class="table table-striped table-sm my-0 mydatatable text-sm">
+						<thead class="text-left">
+							<tr>
+								<th style="width: 10px;">Tanggal</th>
+								<th style="width: 150px;">Nama Barang</th>
+								<th style="width: 48px;">Jumlah</th>
+								<th style="width: 31px;">Unit</th>
+								<th style="width: 79px;">Supplier</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($brgKeluar as $bk) { ?>
+								<tr>
+									<td><?= $bk['tglBrgKeluar']; ?></td>
+									<td><?= $bk['namaBarang']; ?></td>
+									<td><?= $bk['jumlahBarang']; ?></td>
+									<td><?= $bk['namaUnit']; ?></td>
+									<td><?= $bk['namaSupp']; ?></td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div> -->
 		</div>
 	</div>
 </div>

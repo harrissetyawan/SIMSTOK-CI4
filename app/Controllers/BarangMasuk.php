@@ -47,6 +47,20 @@ class BarangMasuk extends BaseController
 		$data['profil'] = $this->pengaturanModel->where('idProfil', '2')->first();
 		return view('actionBM/addPOBM', $data);
 	}
+
+	public function buatRetur()
+	{
+		helper('text');
+		$data['title'] = 'BUAT PO';
+		$data['uri'] = service('uri');
+		$data['brgMasuk'] = $this->barangMasukModel->findAll();
+		$data['barang'] = $this->post();
+		$data['supplier'] = $this->supplierModel->findAll();
+		$data['profil'] = $this->pengaturanModel->where('idProfil', '2')->first();
+		return view('actionBM/addRetur', $data);
+		// dd($data['brgMasuk']);
+	}
+
 	public function post()
 	{
 		$request = service('request');

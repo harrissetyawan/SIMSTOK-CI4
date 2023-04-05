@@ -1,0 +1,31 @@
+@media print {
+ #content,
+ .modal-header,
+ #btn-print,
+ .container-fluid {
+  display: none !important;
+}
+
+.modal-body,
+.modal-dialog,
+table {
+  padding: 2rem;
+  margin: 0;
+  width: 100%;
+}
+
+@page {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+}
+
+@media screen {
+  .modal-content,
+  .modal-body,
+  .modal {
+    width: 100%;
+    height: 100%;
+  }
+}

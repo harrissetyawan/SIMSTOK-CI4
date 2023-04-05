@@ -14,6 +14,10 @@ class Home extends BaseController
     protected $barangModel;
     protected $merkModel;
     protected $pengaturanModel;
+    protected $supplierModel;
+    protected $unitModel;
+    protected $kategoriModel;
+
     public function __construct()
     {
         $this->barangModel = new barangModel();
@@ -32,9 +36,11 @@ class Home extends BaseController
         $data['kategori'] = $this->kategoriModel->findAll();
         $data['supplier'] = $this->supplierModel->findAll();
         $data['barang'] = $this->barangModel->paginate('15', 'tablebarang');
+        $data['reportBarang'] = $this->barangModel->where('stok <', 5)->findAll();
         $data['pager'] = $this->barangModel->pager;
         $data['title'] = 'Barang';
         return view('layout/barang', $data);
+        // dd($data['reportBarang']);
     }
 
     public function save()

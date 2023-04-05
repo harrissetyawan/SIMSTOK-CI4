@@ -48,6 +48,7 @@ $routes->add('/barangmasuk', 'BarangMasuk::index', ['filter' => 'auth']);
 $routes->add('/updateBM/(:num)', 'BarangMasuk::updateBM/$1', ['filter' => 'auth']);
 $routes->add('/addBrgMasuk', 'BarangMasuk::', ['filter' => 'auth']);
 $routes->add('/buatPO', 'BarangMasuk::formAdd', ['filter' => 'auth']);
+$routes->add('/buatRetur', 'BarangMasuk::buatRetur', ['filter' => 'auth']);
 $routes->add('/getBarang', 'BarangMasuk::getBarang', ['filter' => 'auth']);
 $routes->add('/Messages', 'Messages::checkStok', ['filter' => 'auth']);
 $routes->add('/InsertBM', 'BarangMasuk::insertBM', ['filter' => 'auth']);

@@ -14,12 +14,13 @@
 	<link rel="stylesheet" href="/assets/css/-Login-form-Page-BS4-.css">
 	<link rel="stylesheet" href="/assets/css/Button-Change-Text-on-Hover.css">
 	<link rel="stylesheet" href="/assets/css/Dynamic-Table.css">
-	<link rel="stylesheet" href="/assets/css/Footer-Basic.css">
-	<link rel="stylesheet" href="/assets/css/Footer-Dark.css">
+	<!-- <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
+	<link rel="stylesheet" href="/assets/css/Footer-Dark.css"> -->
 	<link rel="stylesheet" href="/assets/bootstrap/css/buttons.dataTables.min.css">
 	<link rel="stylesheet" href="/assets/bootstrap/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
 	<link rel="stylesheet" href="/assets/css/Off-Canvas-Sidebar-Drawer-Navbar.css">
+	<link rel="stylesheet" href="/assets/css/printReport.css" media="print">
 </head>
 
 <body style="height: 100%; background-color: #fbfbfb;">
@@ -28,7 +29,7 @@
 			<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
 				<span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
 			<a class="navbar-brand" href="/" style="color: var(--orange);">
-			<i class="fa fa-ioxhost pr-2"></i>SIMSTOK TB SANO</a>
+				<i class="fa fa-ioxhost pr-2"></i>SIMSTOK TB SANO</a>
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item" style="color: var(--white);width: 109px;padding-right: 1px;">

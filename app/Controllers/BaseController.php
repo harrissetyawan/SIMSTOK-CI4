@@ -12,20 +12,11 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
- */
-
 class BaseController extends Controller
 {
   protected $pengaturanModel;
+  protected $barangModel;
+  protected $barangKeluarModel;
   public function __construct()
   {
     $this->pengaturanModel = new pengaturanModel();
@@ -33,19 +24,18 @@ class BaseController extends Controller
     $this->barangKeluarModel = new barangKeluarModel();
   }
 
+
   /* CHECK STOK DEFINE STOK FROM TABLE BARANG */
   public function checkAndSendBK($id)
   {
-    $idBK = $this->barangKeluarModel->find($id);
+    $idBK   = $this->barangKeluarModel->find($id);
     $barang = $this->barangModel->where('namaBarang', $idBK['namaBarang'])->first();
     $switch = $this->pengaturanModel->find(2);
-
 
     foreach ($switch as $kolom => $value) {
       switch ($kolom) {
         case 'switchWA':
           if ($value == "true") {
-
             $userkey = 'abf6ee3baf8f';
             $passkey = 'c39570dafb3ed9efa26002b1';
             $telepon = $switch['noWA'];

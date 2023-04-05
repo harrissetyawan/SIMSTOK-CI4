@@ -1,15 +1,16 @@
 <?= $this->extend('layout/main'); ?>
 
 <?= $this->section('content'); ?>
-<div class="text-left d-xl-flex justify-content-xl-center content" style="margin-top: 0px;width: 100%;height: 100%;">
-  <section class="mt-4" style="width: 1130.327px;height: 520px;max-height: 520px;">
+<div id="content" class="text-left d-xl-flex justify-content-xl-center content">
+  <section class="mt-4">
     <div class="container-fluid">
       <div class="row">
         <div class="col">
           <div class="card shadow">
             <div class="card-header flex-column py-2">
-              <p class="lead text-info m-0" style="width: 700px;padding-bottom: 4px;color: var(--orange);">DAFTAR BARANG</p>
+              <p class="lead text-info m-0">DAFTAR BARANG</p>
               <button class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" type="button">TAMBAH</button>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#modalReport" type="button">Report Stok</button>
             </div>
             <div class="card-body" style="padding: 0px 10px 10px 10px;">
               <div class="table-responsive table pr-2">
@@ -94,7 +95,8 @@
                 <select id="selectOptUnit" class="form-control col-auto selectpicker" name="selectOptUnit" data-live-search="true" data-size="5">
                   <?php foreach ($unit as $key => $value) : ?>
                     <option data-subtext="<?= $value['keterangan'] ?>" name="opt" data-tokens="<?= $value['namaUnit']; ?>" value="<?= $value['namaUnit']; ?>">
-                      <?= $value['namaUnit']; ?></option>
+                      <?= $value['namaUnit']; ?>
+                    </option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -122,7 +124,8 @@
                 <label class="pr-3" for="#selectOptKat">Kategori</label>
                 <select id="selectOptKat" name="selectOptKat" class="selectpicker" data-live-search="true" data-size="5">
                   <?php foreach ($kategori as $value) : ?>
-                    <option data-tokens="<?= $value['namaKategori'] ?>" name="selectOptKat" value="<?= $value['namaKategori'] ?>"><?= $value['namaKategori'] ?>
+                    <option data-tokens="<?= $value['namaKategori'] ?>" name="selectOptKat" value="<?= $value['namaKategori'] ?>">
+                      <?= $value['namaKategori'] ?>
                     </option>
                   <?php endforeach; ?>
                 </select>
@@ -130,13 +133,60 @@
             </div>
             <div class="form-floating">
               <label for="floatingTextarea2">Deskripsi</label>
-              <textarea class="form-control" name="deskripsi" placeholder="Deskripsi (optional)" id="floatingTextarea2" style="height: 100px"></textarea>
+              <textarea class="form-control" name="deskripsi" placeholder="Deskripsi (optional)" id="floatingTextarea2" style="height: 100px">
+            </textarea>
             </div>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
         <button class="btn btn-primary" type="submit" formaction="/saveDataBarang">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Report -->
+<div class="modal fade" role="dialog" tabindex="-1" id="modalReport" aria-labelledby="modalEditLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">REPORT STOK BARANG</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <button class="btn btn-info mb-2" onclick="window.print()" id="btn-print">Print Out</button>
+          <table id="tableReport" class="table table-striped table-sm my-0 mydatatable text-sm">
+            <thead class="text-left">
+              <tr>
+                <th style="width: 200px;">Nama Barang</th>
+                <th style="width: 45px;">Stok</th>
+                <th style="width: 65px;">Satuan</th>
+                <th style="width: 65px;">Merk</th>
+                <th style="width: 235px;">Nama Supplier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($reportBarang as $key => $value) : ?>
+                <tr>
+                  <td><?= $value['namaBarang'] ?></td>
+                  <td><?= $value['stok'] ?></td>
+                  <td><?= $value['unit'] ?></td>
+                  <td><?= $value['merk'] ?></td>
+                  <td><?= $value['supplier'] ?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+        <!-- <button class="btn btn-primary" type="submit" formaction="/saveDataBarang">Save</button> -->
       </div>
       </form>
     </div>

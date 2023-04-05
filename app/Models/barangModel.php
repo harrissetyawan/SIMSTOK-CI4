@@ -19,6 +19,7 @@ class barangModel extends Model
       ->join('tablemerk', 'tablemerk.idMerk = tablebarang.merk')
       ->get()->getResultArray();
   }
+
   function getUpdate($id)
   {
     $builder = $this->table('tablebarang')->where('id', $id);
@@ -29,6 +30,7 @@ class barangModel extends Model
     $query = $builder->get();
     return $query->getRow();
   }
+
   function oosBarang()
   {
     $builder = $this->table('tablebarang')->where('stok <', 5);
