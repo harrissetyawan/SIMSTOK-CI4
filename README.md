@@ -1,63 +1,48 @@
-# CodeIgniter 4 Application Starter
+# Inventory Management System for Building Store
 
-## What is CodeIgniter?
+This project is an Inventory Management System designed for a building store. It provides a comprehensive solution for managing stock and automates stock reminders through WhatsApp. The system is built using the following technologies:
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+- Framework: CodeIgniter 4
+- JavaScript Library: jQuery
+- CSS Preprocessor: Less
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Features
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+- User-friendly interface for managing inventory
+- Automatic stock reminders via WhatsApp
+- Stock tracking and monitoring
+- Inventory categorization and organization
+- Sales and purchase management
+- Reporting and analytics
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+## Installation and Usage
 
-## Installation & updates
+To use this project, please follow these steps:
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+1. Clone the repository: `git clone https://github.com/your-username/repository.git`
+2. Install dependencies: `composer install`
+3. Configure the database connection in the `.env` file
+4. Import the database schema from `database.sql`
+5. Start the server: `php spark serve`
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## Screenshots
 
-## Setup
+![Screenshot 1](/screenshots/screenshot1.png)
+*Caption for Screenshot 1*
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+![Screenshot 2](/screenshots/screenshot2.png)
+*Caption for Screenshot 2*
 
-## Important Change with index.php
+## Contributing
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Submit a pull request
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## License
 
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.3 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+This project is licensed under the [MIT License](LICENSE).
